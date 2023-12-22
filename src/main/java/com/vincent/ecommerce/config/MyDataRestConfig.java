@@ -1,9 +1,6 @@
 package com.vincent.ecommerce.config;
 
-import com.vincent.ecommerce.entity.Country;
-import com.vincent.ecommerce.entity.Product;
-import com.vincent.ecommerce.entity.ProductCategory;
-import com.vincent.ecommerce.entity.State;
+import com.vincent.ecommerce.entity.*;
 import jakarta.persistence.EntityManager;
 
 import jakarta.persistence.metamodel.EntityType;
@@ -42,12 +39,13 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
         disableHttpMethods(Country.class, config, theUnsupportedActions);
         disableHttpMethods(State.class, config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
         // call an internal helper method
         exposeIds(config);
 
         // configure cors mapping
-        cors.addMapping(config.getBasePath() + "**").allowedOrigins(theAllowedOrigins);
+        cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins);
 
     }
 
