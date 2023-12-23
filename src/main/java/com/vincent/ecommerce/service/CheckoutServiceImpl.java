@@ -23,7 +23,7 @@ public class CheckoutServiceImpl implements CheckoutService{
     private CustomerRepository customerRepository;
 
     public CheckoutServiceImpl(CustomerRepository customerRepository,
-                               @Value("${stripe.key.secret") String secretKey) {
+                               @Value("${stripe.key.secret}") String secretKey) {
         this.customerRepository = customerRepository;
 
         // initialize Stripe API with secret key
@@ -76,7 +76,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         Map<String, Object> params = new HashMap<>();
         params.put("amount", paymentInfo.getAmount());
-        params.put("currentcy", paymentInfo.getCurrency());
+        params.put("currency", paymentInfo.getCurrency());
         params.put("payment_method_types", paymentMethodTypes);
 
         return PaymentIntent.create(params);
