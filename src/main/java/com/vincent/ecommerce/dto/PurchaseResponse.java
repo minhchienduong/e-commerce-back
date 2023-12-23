@@ -1,4 +1,4 @@
-package com.vincent.ecommerce.entity;
+package com.vincent.ecommerce.dto;
 
 import lombok.Data;
 
